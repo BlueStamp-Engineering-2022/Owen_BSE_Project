@@ -4,7 +4,7 @@ Servo myservo1; // create servo object to control a servo
 Servo myservo2;
 Servo myservo3;
 Servo myservo4;
-int pos1=90, pos2=90, pos3=90, pos4=90; // define the variable of 4 servo angle,and assign the initial value (that is the boot posture
+int pos1=90, pos2=90, pos3=90, pos4=120; // define the variable of 4 servo angle,and assign the initial value (that is the boot posture
 //angle value)
 int pos5, pos6, pos7, pos8;
 const int right_X = A2; // define the right X pin to A2
@@ -202,12 +202,32 @@ void left_button()
 {
   int button1State=button1.getState();
   if(button1State==0){
-  myservo1.write(513);
+  /*myservo1.write(513);
     delay(1000);
   myservo2.write(519);
   myservo3.write(509);
   myservo4.write(508);
-    delay(1000); 
+    delay(1000); */
+    myservo4.write(180);
+      
+    delay(500);
+    myservo3.write(0);
+    
+    myservo2.write(180);
+    
+    delay(250);
+    myservo4.write(90);
+   
+    delay(500);
+    myservo3.write(90);
+  
+    delay(250);
+    myservo2.write(90);
+    
+    delay(1000);
+    
+    
+    
    
   }  
 }
@@ -217,4 +237,12 @@ void left_button()
 void right_button()
 {
   int button2State=button2.getState();
+  if(button2State==0){
+    myservo1.write(90);
+      delay(1000);
+    myservo2.write(90);
+    myservo3.write(90);
+    myservo4.write(120);
+   
+  }
 }
