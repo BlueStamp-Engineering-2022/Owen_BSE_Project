@@ -1,21 +1,26 @@
 #include <Servo.h> // add the servo libraries
+#include <ezButton.h> 
 Servo myservo1; // create servo object to control a servo
 Servo myservo2;
 Servo myservo3;
 Servo myservo4;
-int pos1=90, pos2=90, pos3=90, pos4=180; // define the variable of 4 servo angle,and assign the initial value (that is the boot posture
+int pos1=90, pos2=90, pos3=90, pos4=90; // define the variable of 4 servo angle,and assign the initial value (that is the boot posture
 //angle value)
+int pos5, pos6, pos7, pos8;
 const int right_X = A2; // define the right X pin to A2
 const int right_Y = A5; // define the right Y pin to A5
-const int right_key = 7; // define the right key pin to 7（that is the value of Z）
+//const int right_key = 7; // define the right key pin to 7（that is the value of Z）
 const int left_X = A3; // define the left X pin to A3
 const int left_Y = A4; // define the left X pin to A4
-const int left_key = 8; //define the left key pin to 8（that is the value of Z）
+//const int left_key = 8; //define the left key pin to 8（that is the value of Z）
 int x1,y1,z1; // define the variable, used to save the joystick value it read.
 int x2,y2,z2;
+ezButton button1 (8);
+ezButton button2 (7);
 
 void setup()
 {
+
 // boot posture
 myservo1.write(pos1);
 delay(1000);
@@ -23,24 +28,29 @@ myservo2.write(pos2);
 myservo3.write(pos3);
 myservo4.write(pos4);
 delay(1500);
-pinMode(right_key, INPUT); // set the right/left key to INPUT
-pinMode(left_key, INPUT);
+//pinMode(right_key, INPUT); // set the right/left key to INPUT
+//pinMode(left_key, INPUT);
 Serial.begin(9600); // set the baud rate to 9600
+button1.setDebounceTime(50); // set debounce time to 50 milliseconds
+button2.setDebounceTime(50); // set debounce time to 50 milliseconds
 }
 void loop()
 {
+button1.loop();
+button2.loop();
 myservo1.attach(3); // set the control pin of servo 1 to D3  dizuo-servo1-3
 myservo2.attach(5); // set the control pin of servo 2 to D5  arm-servo2-5
 myservo3.attach(6); //set the control pin of servo 3 to D6   lower arm-servo-6
 myservo4.attach(9); // set the control pin of servo 4 to D9  claw-servo-9
 x2 = analogRead(right_X); //read the right X value
 y2 = analogRead(right_Y); // read the right Y value
-z2 = digitalRead(right_key); //// read the right Z value
+//z2 = digitalRead(right_key); //// read the right Z value
 x1 = analogRead(left_X); //read the left X value
 y1 = analogRead(left_Y); //read the left Y value
-z1 = digitalRead(left_key); // read the left Z value
-delay(100);
-Serial.println(z2);
+//z1 = digitalRead(left_key); // read the left Z value
+delay(5);
+
+
 //delay(5); // lower the speed overall
 
 // claw
@@ -55,8 +65,11 @@ upper_arm();
 //lower arm
 lower_arm();
 
+left_button();
 
+right_button();
 }
+
 
 
 
@@ -180,4 +193,28 @@ if(pos3>135) //limit the lifting angle
 pos3=135;
 }
 }
+}
+
+//****************************************************************/
+
+//left side button
+void left_button()
+{
+  int button1State=button1.getState();
+  if(button1State==0){
+  myservo1.write(513);
+    delay(1000);
+  myservo2.write(519);
+  myservo3.write(509);
+  myservo4.write(508);
+    delay(1000); 
+   
+  }  
+}
+
+
+// right side button
+void right_button()
+{
+  int button2State=button2.getState();
 }
