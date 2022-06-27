@@ -16,8 +16,10 @@ This will serve as a brief description of your project. Limit this to three sent
 # Second Milestone
 
 
+[![Second Milestone](https://img.youtube.com/vi/UAZQtvbc5i0/maxresdefault.jpg)](https://www.youtube.com/watch?v=UAZQtvbc5i0 "Second Milestone"){:target="_blank" rel="noopener"}
 
-[![Second Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1612574014/video_to_markdown/images/youtube--y3VAmNlER5Y-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=y3VAmNlER5Y&feature=emb_logo "Second Milestone"){:target="_blank" rel="noopener"}
+My second milestone was designing an outer enclosure for the arm, which has a module built into the bottom to house extra batteries, breadboards, microcontrollers, etc.  The point of the bottom module was to add mobility and portability to the arm, and when used with the bluetooth controller, it allows it to be controlled from farther distances than you could with a wired controller.  I enjoyed working with the CAD software (Fusion 360) to model the enclosure, which was pretty straightforward and wasn't very difficult.  The only problems I encountered were when I found out that my original design was too big for the 3d printer, which meant I had to go back, split it in half, and model ways to connect the two halves together.  I also measured the cutout for the arduino wrong, which meant I had to go back and file it down to fit.  
+
 # First Milestone
   
 
